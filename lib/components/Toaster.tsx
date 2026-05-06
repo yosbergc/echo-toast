@@ -4,9 +4,9 @@ import { X, LoaderCircle, Check, ShieldAlert, Info } from 'lucide-react';
 interface IToaster {
     type: 'loading' | 'succesful' | 'error' | 'warning' | 'info' | 'blank'
     action?: {
-        label?: string,
+        label: string,
         onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-        styling: string
+        styling?: string
     },
     label: string
     title?: string
@@ -82,8 +82,33 @@ const notificationPosition = {
 const mainStyle = {
     position: 'absolute' as const,
     borderRadius: 8,
-    boxShadow: '0px 0px 2px #eeeff1',
-    cursor: 'pointer'
+    boxShadow: '0px 0px 2px #eeeff1'
+}
+const buttonStyle = {
+    blank: {
+        backgroundColor: '#e5e7eb',
+        color: '#4b5563'
+    },
+    loading: {
+        backgroundColor: '#e5e7eb',
+        color: '#4b5563'
+    },
+    succesful: {
+        backgroundColor: '#4ade80',
+        color: '#166534'
+    },
+    error: {
+        backgroundColor: '#fecaca',
+        color: '#991b1b'
+    },
+    warning: {
+        backgroundColor: '#f97316',
+        color: 'white'
+    },
+    info: {
+        backgroundColor: '#1e3a8a',
+        color: 'white'
+    }
 }
 const notificationStyle = {
     blank: {
@@ -111,7 +136,6 @@ const notificationStyle = {
         border: '1px solid #ddd6fe'
     }
 }
-
 const textColor = {
     blank: '#1f2937',
     loading: '#1f2937',
@@ -120,7 +144,6 @@ const textColor = {
     warning: '#ea580c',
     info: '#1e3a8a',
 }
-
 const defaultIcons = {
     "loading": LoaderCircle,
     "succesful": Check,
@@ -129,12 +152,12 @@ const defaultIcons = {
     "info": Info,
     "blank": undefined
 }
-
 export function Toaster(
     {
     type = 'blank',
     label,
     icon,
+    action,
     positionX = 'right',
     positionY = 'bottom',
     closeButton = true,
@@ -148,7 +171,6 @@ export function Toaster(
 
     return (
         <motion.section 
-        whileTap={{ scale: 0.95 }}
         exit={{ opacity: 0 }}
         drag
         dragDirectionLock
@@ -165,7 +187,7 @@ export function Toaster(
             position: 'relative',
             paddingLeft: '1rem',
             paddingTop: '0.8rem',
-            paddingRight: '8rem',
+            paddingRight: action ? '3rem' : '8rem',
             paddingBottom: '0.8rem',
             display: Icon ? 'flex' : 'block', 
             alignItems: 'center',
@@ -175,8 +197,15 @@ export function Toaster(
                         <Icon size={18} color={textColor[type]}/>
                     </section>
             }
+            <section style={{
+                display: 'flex',
+                flexDirection: action ? 'row' : 'column',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 16
+            }}>
             <section>
-            {
+                {
                 title && <p style={{
                 fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
                 fontSize: '0.9rem',
@@ -193,6 +222,25 @@ export function Toaster(
                 marginBottom: '0px',
                 color: textColor[type]
             }}>{label}</p>
+            </section>
+            {
+                action && <button onClick={action.onClick} style={{
+                    border: 'none',
+                    backgroundColor: buttonStyle[type].backgroundColor,
+                    paddingTop: '0.4rem',
+                    paddingBottom: '0.4rem',
+                    paddingLeft: '0.8rem',
+                    paddingRight: '0.8rem',
+                    borderRadius: '8px',
+                    fontSize: '0.8rem',
+                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                    cursor: 'pointer',
+                    fontWeight: 600,
+                    color: buttonStyle[type].color
+                }}>
+                    {action.label}
+                </button>
+            }
             </section>
 
             {
