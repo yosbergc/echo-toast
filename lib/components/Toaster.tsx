@@ -82,7 +82,7 @@ const notificationPosition = {
 const mainStyle = {
     position: 'absolute' as const,
     borderRadius: 8,
-    boxShadow: '0px 0px 10px #eeeff1',
+    boxShadow: '0px 0px 2px #eeeff1',
     cursor: 'pointer'
 }
 const notificationStyle = {
