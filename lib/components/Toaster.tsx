@@ -1,6 +1,5 @@
-import '@fontsource/inter';
 import { motion } from 'motion/react';
-import { X, LoaderCircle, Check, MessageCircleWarning, Info } from 'lucide-react';
+import { X, LoaderCircle, Check, ShieldAlert, Info } from 'lucide-react';
 
 interface IToaster {
     type: 'loading' | 'succesful' | 'error' | 'warning' | 'info' | 'blank'
@@ -11,7 +10,7 @@ interface IToaster {
     },
     label: string
     title?: string
-    icon?: SVGAElement,
+    icon?: React.ElementType,
     positionX?: 'left' | 'center' | 'right'
     positionY?: 'up' | 'middle' | 'bottom'
     closeButton?: boolean
@@ -125,25 +124,28 @@ const textColor = {
 const defaultIcons = {
     "loading": LoaderCircle,
     "succesful": Check,
-    "error": MessageCircleWarning,
-    "warning": X,
-    "info": Info
+    "error": X,
+    "warning": ShieldAlert,
+    "info": Info,
+    "blank": undefined
 }
 
 export function Toaster(
     {
     type = 'blank',
-    action,
     label,
     icon,
     positionX = 'right',
     positionY = 'bottom',
     closeButton = true,
-    closeButtonPosition = 'top-right',
     title
     } : IToaster) {
         
-    const Icon = defaultIcons[type] ? defaultIcons[type] : icon ? icon : undefined
+    const Icon = (defaultIcons[type]) ? 
+    (type !== 'blank') ? 
+    defaultIcons[type] : icon ? 
+    icon : undefined : undefined
+
     return (
         <motion.section 
         whileTap={{ scale: 0.95 }}
@@ -162,29 +164,33 @@ export function Toaster(
             <section style={{ 
             position: 'relative',
             paddingLeft: '1rem',
-            paddingTop: '4px',
+            paddingTop: '0.8rem',
             paddingRight: '8rem',
-            paddingBottom: '4px',
+            paddingBottom: '0.8rem',
             display: Icon ? 'flex' : 'block', 
             alignItems: 'center',
             gap: 16 }}>
             {
-                Icon && <Icon size={14} />
+                Icon && Icon !== undefined && <section>
+                        <Icon size={18} color={textColor[type]}/>
+                    </section>
             }
             <section>
             {
                 title && <p style={{
-                fontFamily: 'Inter',
-                fontSize: '0.8rem',
+                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                fontSize: '0.9rem',
                 fontWeight: 700,
                 marginBottom: '4px',
+                marginTop: '0px',
                 color: textColor[type]
             }}>{title}</p>
             }
             <p style={{
-                fontFamily: 'Inter',
+                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
                 fontSize: '0.8rem',
                 marginTop: title ? '0px' : '16px',
+                marginBottom: '0px',
                 color: textColor[type]
             }}>{label}</p>
             </section>

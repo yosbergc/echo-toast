@@ -15,7 +15,7 @@ export default defineConfig({
       formats: ['es']
     },
     rolldownOptions: {
-      external: ['react', 'react/jsx-runtime']
+      external: ['react', 'react/jsx-runtime', 'react-dom', 'framer-motion', 'lucide-react']
     }
   }
 })

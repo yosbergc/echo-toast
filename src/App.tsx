@@ -5,7 +5,7 @@ function App() {
     <>
       <Toaster 
         label='Archivo agregado satisfactoriamente' 
-        type='succesful' 
+        type='blank' 
         title='Echo Toast'
       />
     </>
