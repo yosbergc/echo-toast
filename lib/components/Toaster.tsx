@@ -14,7 +14,6 @@ interface IToaster {
     positionX?: 'left' | 'center' | 'right'
     positionY?: 'up' | 'middle' | 'bottom'
     closeButton?: boolean
-    closeButtonPosition?: 'outside' | 'top-right'
     border?: boolean,
     borderColor?: {
         light: string,
@@ -187,7 +186,7 @@ export function Toaster(
             position: 'relative',
             paddingLeft: '1rem',
             paddingTop: '0.8rem',
-            paddingRight: action ? '3rem' : '8rem',
+            paddingRight: action ? closeButton ? '2.5Arem' : '1rem' : '8rem',
             paddingBottom: '0.8rem',
             display: Icon ? 'flex' : 'block', 
             alignItems: 'center',
