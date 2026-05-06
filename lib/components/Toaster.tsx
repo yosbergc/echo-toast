@@ -192,9 +192,14 @@ export function Toaster(
             alignItems: 'center',
             gap: 16 }}>
             {
-                Icon && Icon !== undefined && <section>
+                Icon && Icon !== undefined && <motion.div style={{
+                    display: 'flex',
+                    alignItems: 'center'
+                }}
+                animate={type === 'loading' ? { rotate: 360 } : {}}
+                transition={type === 'loading' ? { repeat: Infinity, duration: 1, ease: "linear" } : {}}>
                         <Icon size={18} color={textColor[type]}/>
-                    </section>
+                    </motion.div>
             }
             <section style={{
                 display: 'flex',
@@ -214,10 +219,11 @@ export function Toaster(
                 color: textColor[type]
             }}>{title}</p>
             }
+
             <p style={{
                 fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
                 fontSize: '0.8rem',
-                marginTop: title ? '0px' : '16px',
+                marginTop: '0px',
                 marginBottom: '0px',
                 color: textColor[type]
             }}>{label}</p>
