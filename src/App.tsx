@@ -13,6 +13,26 @@ function App() {
         Enviar subject
       </button>
 
+      <button onClick={() => {
+        subjectStore.notify({
+          label: 'Hola mundo',
+          title: 'Saludo',
+          type: 'error'
+        })
+      }}>
+        Enviar subject 2
+      </button>
+
+      <button onClick={() => {
+        subjectStore.notify({
+          label: 'Hola mundo',
+          title: 'Saludo',
+          type: 'blank'
+        })
+      }}>
+        Enviar subject 3
+      </button>
+
       <Toaster />
     </>
   )

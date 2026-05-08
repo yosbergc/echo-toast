@@ -61,7 +61,7 @@ export function Toast(
             paddingTop: '0.8rem',
             paddingRight: action ? closeButton ? '2.5Arem' : '1rem' : '8rem',
             paddingBottom: '0.8rem',
-            display: Icon ? 'flex' : 'block', 
+            display: 'flex', 
             alignItems: 'center',
             gap: 16 }}>
             {
@@ -132,8 +132,9 @@ export function Toast(
                     cursor: 'pointer',
                     zIndex: 10
                 }}
-                onClick={() => {
+                onPointerDown={(event) => {
                     if (deleteToast) {
+                        event.stopPropagation()
                         deleteToast()
                     }
                 }}>
