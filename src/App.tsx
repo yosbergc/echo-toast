@@ -1,10 +1,9 @@
-import { subjectStore } from '../lib/hooks/observer'
-import { Toaster } from '../lib/components/Toaster'
+import { Toaster, echo } from '../lib/main'
 function App() {
   return (
     <>
       <button onClick={() => {
-        subjectStore.notify({
+        echo.notify({
           label: 'Hola mundo',
           title: 'Saludo',
           type: 'succesful'
@@ -14,7 +13,7 @@ function App() {
       </button>
 
       <button onClick={() => {
-        subjectStore.notify({
+        echo.notify({
           label: 'Hola mundo',
           title: 'Saludo',
           type: 'error'
@@ -24,7 +23,7 @@ function App() {
       </button>
 
       <button onClick={() => {
-        subjectStore.notify({
+        echo.notify({
           label: 'Hola mundo',
           title: 'Saludo',
           type: 'blank'

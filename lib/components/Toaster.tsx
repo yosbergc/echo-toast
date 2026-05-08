@@ -1,5 +1,5 @@
 import { Toast } from "./Toast";
-import { subjectStore } from "../hooks/observer";
+import { echoToastStore } from "../hooks/observer";
 import { useToaster } from "../hooks/useToaster";
 import { AnimatePresence } from "motion/react";
 import { notificationPosition } from "../static/static";
@@ -9,7 +9,7 @@ export function Toaster({
         positionX = 'right',
         positionY = 'bottom'
     }: IToaster) {
-    const toasts = useToaster(subjectStore)
+    const toasts = useToaster(echoToastStore)
     
     return <section style={{
             position: 'fixed',

@@ -1,7 +1,7 @@
 import type { IToast } from "../types"
 type Listener = (data: IToast) => void
 
-export class Subject {
+export class EchoToast {
     private observers: Listener[] = [];
     private counter: number = 0;
 
@@ -19,4 +19,4 @@ export class Subject {
     }
 }
 
-export const subjectStore = new Subject()
+export const echoToastStore = new EchoToast()

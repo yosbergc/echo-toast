@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import type { Subject } from "./observer";
+import type { EchoToast } from "./observer";
 import type { IToast } from "../types";
-export function useToaster(subject: Subject) {
+export function useToaster(echoToast: EchoToast) {
     const [toasts, setToasts] = useState<IToast[]>([])
     useEffect(() => {
         let arrayTimeout: ReturnType <typeof setTimeout>[] = [];
-        const unsubscribe = subject.subscribe((data) => {
+        const unsubscribe = echoToast.subscribe((data) => {
             function deleteToast() {
                 setToasts((prevToasts) => prevToasts.filter(toast => toast.id !== data.id))
                 clearTimeout(timeout)
@@ -29,7 +29,7 @@ export function useToaster(subject: Subject) {
                 }
             })
         }
-    }, [subject])
+    }, [echoToast])
 
 
     return toasts;
