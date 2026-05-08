@@ -6,7 +6,8 @@ import dts from 'unplugin-dts/vite'
 export default defineConfig({
   plugins: [react(), dts({
     include: ['lib'],
-    tsconfigPath: './tsconfig.lib.json'
+    tsconfigPath: './tsconfig.lib.json',
+    bundleTypes: true
   })],
   build: {
     copyPublicDir: false,
@@ -15,7 +16,7 @@ export default defineConfig({
       formats: ['es']
     },
     rolldownOptions: {
-      external: ['react', 'react/jsx-runtime', 'react-dom', 'framer-motion', 'lucide-react']
+      external: ['react', 'react/jsx-runtime', 'react-dom', 'framer-motion', 'lucide-react', "motion"]
     }
   }
 })
