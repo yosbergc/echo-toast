@@ -1,5 +1,6 @@
 export interface IToaster {
-    type: 'loading' | 'succesful' | 'error' | 'warning' | 'info' | 'blank'
+    id?: number
+    type?: 'loading' | 'succesful' | 'error' | 'warning' | 'info' | 'blank'
     action?: {
         label: string,
         onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
