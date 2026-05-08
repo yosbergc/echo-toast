@@ -5,7 +5,9 @@ function App() {
     <>
       <button onClick={() => {
         subjectStore.notify({
-          label: 'Hola mundo'
+          label: 'Hola mundo',
+          title: 'Saludo',
+          type: 'succesful'
         })
       }}>
         Enviar subject

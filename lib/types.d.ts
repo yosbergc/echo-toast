@@ -19,5 +19,6 @@ export interface IToaster {
     },
     swipe?: boolean,
     swipeDirection?: 'left' | 'right'
+    deleteToast?: () => void
 }
 

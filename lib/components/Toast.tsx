@@ -18,7 +18,8 @@ export function Toast(
     title,
     duration,
     swipe = true,
-    swipeDirection = 'right'
+    swipeDirection = 'right',
+    deleteToast
     } : IToaster) {
     const [initialSwipe, setInitialSwipe] = useState<number>(0) 
     const Icon = (defaultIcons[type] && type !== 'blank') ? defaultIcons[type] : icon ? icon : undefined
@@ -27,29 +28,35 @@ export function Toast(
         event.currentTarget.setPointerCapture(event.pointerId)
         setInitialSwipe(event.clientX)
     }
+
     const checkSwipe = (event: React.PointerEvent<HTMLElement>) => {
         const difference = initialSwipe - event.clientX;
         if (Math.abs(difference) > 100) {
             if (difference < 0 && swipeDirection === 'right') {
-                console.log('right')
+                if (deleteToast) {
+                    deleteToast()
+                }
             }
             if (difference > 0 && swipeDirection === 'left') {
-                console.log('left')
+                if (deleteToast) {
+                    deleteToast()
+                }
             }
         }
     }
-    
+
     return (
         <motion.section 
-        exit={{ opacity: 0 }}
         drag
+        exit={{ opacity: 0 }}
         dragDirectionLock
         dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1, transition: { duration: duration?.animation ?? 0.2 }}}
         onPointerDown={swipe ? handleSwipe : undefined}
         onPointerUp={swipe ? checkSwipe : undefined}
-        style={styleMainToaster}>
+        style={styleMainToaster}
+        >
             <section style={{ 
             position: 'relative',
             paddingLeft: '1rem',
@@ -124,9 +131,15 @@ export function Toast(
                     position: 'absolute',
                     top: 8,
                     right: 8,
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    zIndex: 10
+                }}
+                onClick={() => {
+                    if (deleteToast) {
+                        deleteToast()
+                    }
                 }}>
-                    <X size={18}/>
+                    <X size={18} />
                 </button>
             }
             </section>
