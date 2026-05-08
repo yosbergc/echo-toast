@@ -18,6 +18,7 @@ Import the **<Toaster />** component to your page/component. Then you can use th
 
 ```js
 // Home.tsx
+
 import { Toaster } from 'echo-toast'
 import { SuperButton } from '@/components/SuperButton.tsx'
 
@@ -33,13 +34,14 @@ export function Home() {
 
 ```js
 // SuperButton.tsx
+
 import { echo } from 'echo-toast'
 
 export function Home() {
 
   function handleClick() {
     echo.notify({
-      label: 'I've just said hi!'
+      label: "I've just said hi!"
       title: 'Greetings!'
     })
   }
