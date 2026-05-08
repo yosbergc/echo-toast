@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import type { Subject } from "./observer";
-import type { IToaster } from "../types";
+import type { IToast } from "../types";
 export function useToaster(subject: Subject) {
-    const [toasts, setToasts] = useState<IToaster[]>([])
+    const [toasts, setToasts] = useState<IToast[]>([])
     useEffect(() => {
         let arrayTimeout: ReturnType <typeof setTimeout>[] = [];
         const unsubscribe = subject.subscribe((data) => {

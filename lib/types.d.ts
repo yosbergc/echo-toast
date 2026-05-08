@@ -1,4 +1,4 @@
-export interface IToaster {
+export interface IToast {
     id?: number
     type?: 'loading' | 'succesful' | 'error' | 'warning' | 'info' | 'blank'
     action?: {
@@ -9,8 +9,6 @@ export interface IToaster {
     label: string
     title?: string
     icon?: React.ElementType,
-    positionX?: 'left' | 'center' | 'right'
-    positionY?: 'up' | 'middle' | 'bottom'
     closeButton?: boolean
     border?: boolean,
     duration?: {
@@ -22,3 +20,7 @@ export interface IToaster {
     deleteToast?: () => void
 }
 
+export interface IToaster {
+    positionX?: 'left' | 'center' | 'right'
+    positionY?: 'up' | 'middle' | 'bottom'
+}

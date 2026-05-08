@@ -52,7 +52,6 @@ export const notificationPosition = {
 }
 
 export const mainStyle = {
-    position: 'fixed' as const,
     borderRadius: 8,
     boxShadow: '0px 0px 2px #eeeff1'
 }

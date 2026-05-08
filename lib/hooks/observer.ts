@@ -1,5 +1,5 @@
-import type { IToaster } from "../types"
-type Listener = (data: IToaster) => void
+import type { IToast } from "../types"
+type Listener = (data: IToast) => void
 
 export class Subject {
     private observers: Listener[] = [];
@@ -13,7 +13,7 @@ export class Subject {
         }
     }
 
-    notify(data: IToaster) {
+    notify(data: IToast) {
         this.counter++;
         this.observers.forEach((observer) => observer({...data, id: this.counter}))
     }

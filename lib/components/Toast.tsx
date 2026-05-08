@@ -2,8 +2,8 @@
 
 import { motion } from 'motion/react';
 import { X } from 'lucide-react';
-import type { IToaster } from '../types';
-import { notificationPosition, mainStyle, buttonStyle, notificationStyle, textColor, defaultIcons } from '../static/static';
+import type { IToast } from '../types';
+import { mainStyle, buttonStyle, notificationStyle, textColor, defaultIcons } from '../static/static';
 import { useState } from 'react';
 
 export function Toast(
@@ -12,18 +12,16 @@ export function Toast(
     label,
     icon,
     action,
-    positionX = 'right',
-    positionY = 'bottom',
     closeButton = true,
     title,
     duration,
     swipe = true,
     swipeDirection = 'right',
     deleteToast
-    } : IToaster) {
+    } : IToast ) {
     const [initialSwipe, setInitialSwipe] = useState<number>(0) 
     const Icon = (defaultIcons[type] && type !== 'blank') ? defaultIcons[type] : icon ? icon : undefined
-    const styleMainToaster = {...mainStyle, ...notificationStyle[type], ...notificationPosition[positionX][positionY]}
+    const styleMainToaster = {...mainStyle, ...notificationStyle[type]}
     const handleSwipe = (event: React.PointerEvent<HTMLElement>) => {
         event.currentTarget.setPointerCapture(event.pointerId)
         setInitialSwipe(event.clientX)
@@ -47,12 +45,12 @@ export function Toast(
 
     return (
         <motion.section 
-        drag
+        drag="x"
         exit={{ opacity: 0 }}
         dragDirectionLock
         dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1, transition: { duration: duration?.animation ?? 0.2 }}}
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1, transition: { duration: duration?.animation ?? 0.2 }}}
         onPointerDown={swipe ? handleSwipe : undefined}
         onPointerUp={swipe ? checkSwipe : undefined}
         style={styleMainToaster}
