@@ -53,7 +53,7 @@ export const notificationPosition = {
 
 export const mainStyle = {
     borderRadius: 8,
-    boxShadow: '0px 0px 2px #eeeff1',
+    boxShadow: '0px 0px 4px #efefef',
     maxWidth: '350px',
     width: 'calc(100vw - 40px)'
 }
