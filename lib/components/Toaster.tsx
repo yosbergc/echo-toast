@@ -20,7 +20,7 @@ export function Toaster({
         }}><AnimatePresence>
 
             {
-                toasts.map(toast => (
+                toasts.filter((_, index) => index < 5).map(toast => (
                 <Toast 
                     key={toast.id}
                     {...toast}
