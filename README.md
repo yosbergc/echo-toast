@@ -1,4 +1,4 @@
-# A simple toast component for React/Next.JS under 5kb
+# A simple toast component for React/Next.JS
 
 ## Installation
 
