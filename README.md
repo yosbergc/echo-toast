@@ -1,4 +1,4 @@
-# A simple toast component for React/Next.JS
+# A simple lightweight toast component for React/Next.JS (under 2kb)
 
 ## Installation
 
@@ -14,7 +14,21 @@ npm install echo-toast
 
 ## Usage
 
-Import the **<Toaster />** component to your page/component. Then you can use the **echo.notify()** from anywhere in your app so you can render each toast notification.
+Import the css file on your main file of React.
+
+```js
+// main.tsx
+
+import { createRoot } from "react-dom/client";
+import YourApp from '@/app.tsx'
+import 'echo-toast/styles.css'
+
+const container = document.getElementById('root')
+
+createRoot(container!).render(<YourApp />)
+```
+
+Import the **<Toaster />** component to your page/component. 
 
 ```js
 // Home.tsx
@@ -31,6 +45,8 @@ export function Home() {
   )
 }
 ```
+
+Then you can use the **echo.notify()** from anywhere in your app so you can render each toast notification.
 
 ```js
 // SuperButton.tsx
