@@ -11,10 +11,6 @@ export interface IToast {
     icon?: React.ElementType,
     closeButton?: boolean
     border?: boolean,
-    duration?: {
-        animation?: number,
-        notification?: number
-    },
     swipe?: boolean,
     swipeDirection?: 'left' | 'right'
     deleteToast?: () => void

@@ -1,10 +1,10 @@
 'use client';
 
-import { motion } from 'motion/react';
 import { X } from 'lucide-react';
 import type { IToast } from '../types';
 import { mainStyle, buttonStyle, notificationStyle, textColor, defaultIcons } from '../static/static';
-import { useState } from 'react';
+import { useState, useLayoutEffect, useRef, useEffect } from 'react';
+import './toastStyle.css'
 
 export function Toast(
     {
@@ -14,46 +14,77 @@ export function Toast(
     action,
     closeButton = true,
     title,
-    duration,
     swipe = true,
     swipeDirection = 'right',
     deleteToast
     } : IToast ) {
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const toastRef = useRef<HTMLDivElement>(null)
     const [initialSwipe, setInitialSwipe] = useState<number>(0) 
+    const [hidden, setHidden] = useState<boolean>(false)
     const Icon = (defaultIcons[type] && type !== 'blank') ? defaultIcons[type] : icon ? icon : undefined
     const styleMainToaster = {...mainStyle, ...notificationStyle[type]}
     const handleSwipe = (event: React.PointerEvent<HTMLElement>) => {
         event.currentTarget.setPointerCapture(event.pointerId)
         setInitialSwipe(event.clientX)
     }
+    function handleExitAnimation() {
+        toastRef?.current?.classList.remove('echo-lib-enter')
+        toastRef?.current?.classList.add('echo-lib-fade-out')
+        setHidden(true)
+
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+        }
+    }
 
     const checkSwipe = (event: React.PointerEvent<HTMLElement>) => {
         const difference = initialSwipe - event.clientX;
         if (Math.abs(difference) > 100) {
             if (difference < 0 && swipeDirection === 'right') {
-                if (deleteToast) {
-                    deleteToast()
-                }
+                handleExitAnimation()
             }
             if (difference > 0 && swipeDirection === 'left') {
-                if (deleteToast) {
-                    deleteToast()
-                }
+                handleExitAnimation()
             }
         }
     }
 
+    useLayoutEffect(() => {
+        if (toastRef.current) {
+            toastRef.current.classList.add('echo-lib-enter')
+        }
+    }, [])
+
+    useEffect(() => {
+        timeoutRef.current = setTimeout(() => {
+        if (toastRef.current) {
+            toastRef.current.classList.remove('echo-lib-enter')
+            toastRef.current.classList.add('echo-lib-fade-out')
+            
+            setHidden(true)
+        }}, 5000)
+
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [])
+
+
+    function handleExit() {
+        if (hidden) {
+            deleteToast!()
+        }
+    }
     return (
-        <motion.section 
-        drag="x"
-        exit={{ opacity: 0 }}
-        dragDirectionLock
-        dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
-        initial={{ opacity: 0, scale: 0.9 }} 
-        animate={{ opacity: 1, scale: 1, transition: { duration: duration?.animation ?? 0.2 }}}
+        <section
         onPointerDown={swipe ? handleSwipe : undefined}
         onPointerUp={swipe ? checkSwipe : undefined}
+        onAnimationEnd={handleExit}
         style={styleMainToaster}
+        ref={toastRef}
         >
             <section style={{ 
             position: 'relative',
@@ -65,14 +96,12 @@ export function Toast(
             alignItems: 'center',
             gap: 16 }}>
             {
-                Icon && Icon !== undefined && <motion.div style={{
+                Icon && Icon !== undefined && <section style={{
                     display: 'flex',
                     alignItems: 'center'
-                }}
-                animate={type === 'loading' ? { rotate: 360 } : {}}
-                transition={type === 'loading' ? { repeat: Infinity, duration: 1, ease: "linear" } : {}}>
+                }}>
                         <Icon size={18} color={textColor[type]}/>
-                    </motion.div>
+                    </section>
             }
             <section style={{
                 display: 'flex',
@@ -133,15 +162,13 @@ export function Toast(
                     zIndex: 10
                 }}
                 onPointerDown={(event) => {
-                    if (deleteToast) {
-                        event.stopPropagation()
-                        deleteToast()
-                    }
+                    event.stopPropagation()
+                    handleExitAnimation()
                 }}>
                     <X size={18} />
                 </button>
             }
             </section>
-        </motion.section>
+        </section>
     )
 }

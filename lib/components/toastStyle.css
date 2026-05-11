@@ -1,0 +1,21 @@
+@keyframes echoLibEnterAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes echoLibExitAnimation {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+.echo-lib-enter {
+  animation: echoLibEnterAnimation 0.6s ease-out forwards;
+}
+
+.echo-lib-fade-out {
+  animation: echoLibExitAnimation 0.5s forwards;
+}

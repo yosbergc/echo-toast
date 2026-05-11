@@ -1,7 +1,6 @@
 import { Toast } from "./Toast";
 import { echoToastStore } from "../hooks/observer";
 import { useToaster } from "../hooks/useToaster";
-import { AnimatePresence } from "motion/react";
 import { notificationPosition } from "../static/static";
 import type { IToaster } from "../types";
 
@@ -11,14 +10,7 @@ export function Toaster({
     }: IToaster) {
     const toasts = useToaster(echoToastStore)
     
-    return <section style={{
-            position: 'fixed',
-            display: 'grid',
-            gap: 8,
-            ...notificationPosition[positionX][positionY]
-
-        }}><AnimatePresence>
-
+    return <section style={{ position: 'fixed', display: 'grid', gap: 8, ...notificationPosition[positionX][positionY] }}>
             {
                 toasts.filter((_, index) => index < 5).map(toast => (
                 <Toast 
@@ -27,7 +19,5 @@ export function Toaster({
                 />
                 ))
             }
-
-    </AnimatePresence>
     </section>
 }
