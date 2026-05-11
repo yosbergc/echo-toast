@@ -8,9 +8,14 @@
     "url": "https://github.com/yosbergc/echo-toast/issues"
   },
   "license": "MIT",
-  "keywords": ["react", "toast", "notification", "lightweight"],
+  "keywords": [
+    "react",
+    "toast",
+    "notification",
+    "lightweight"
+  ],
   "private": false,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "main": "./dist/echo-toast.js",
   "module": "./dist/echo-toast.js",
