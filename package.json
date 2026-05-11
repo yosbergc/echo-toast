@@ -1,7 +1,7 @@
 {
   "name": "echo-toast",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "main": "./dist/echo-toast.js",
   "module": "./dist/echo-toast.js",
