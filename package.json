@@ -1,5 +1,14 @@
 {
   "name": "echo-toast",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yosbergc/echo-toast"
+  },
+  "bugs": {
+    "url": "https://github.com/yosbergc/echo-toast/issues"
+  },
+  "license": "MIT",
+  "keywords": ["react", "toast", "notification", "lightweight"],
   "private": false,
   "version": "1.0.8",
   "type": "module",
