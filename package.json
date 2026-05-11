@@ -48,7 +48,10 @@
       "types": "./dist/echo-toast.d.ts",
       "import": "./dist/echo-toast.js"
     },
-    "./styles.css": "./dist/echo-toast.css"
+    "./styles.css": {
+      "default": "./dist/echo-toast.css",
+      "types": "./dist/echo-toast.d.ts"
+    }
   },
   "files": [
     "dist"
