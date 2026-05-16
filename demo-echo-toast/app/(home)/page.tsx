@@ -17,6 +17,14 @@ export default function HomePage() {
         </Link>{' '}
         and see the documentation.
       </p>
+
+      <p className='text-sm mt-8'>Done with 💙 by 
+        <Link href="https://github.com/yosbergc" className='underline'> yosbergc</Link>
+      </p>
+
+      <p className='text-xs text-gray-400 absolute bottom-20 left-1/2 -translate-1/2'>Documentation created thanks to 
+        <Link href="https://www.fumadocs.dev/" className='underline'> Fumadocs</Link>
+      </p>
     </div>
   );
 }
