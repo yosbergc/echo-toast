@@ -1,5 +1,9 @@
 # A simple lightweight toast component for React/Next.JS (under 2kb)
 
+## Documentation
+
+[Documentation](https://echo-toast.vercel.app/)
+
 ## Installation
 
 ```js
