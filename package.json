@@ -19,7 +19,7 @@
     "alerts"
   ],
   "private": false,
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "module",
   "main": "./dist/echo-toast.js",
   "module": "./dist/echo-toast.js",
