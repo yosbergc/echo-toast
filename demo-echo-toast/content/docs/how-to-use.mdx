@@ -1,0 +1,40 @@
+---
+title: How To Use
+description: A quick guide about how to implement the library in your project.
+---
+
+## 1. Add Toaster
+
+Toaster is the main component that will render all the toasts. You can add it to the page where you want all the toast to be show. If you want it all over your project/pages you can add it close to the entry point in case of React or to your Layout on Next.js
+
+```tsx
+import { Toaster } from 'echo-toast'
+
+// Your page
+
+export default function Page() {
+    return (
+        // Your content
+        <Toaster />
+    )
+}
+```
+
+Once you done this, Toaster is ready to work!
+
+## 2. Use echo anywhere in your project
+
+Echo is the function you will use to call a toasts render anywhere in your project. It will let you decide some styling for the toast depending on the situation you need it. The only mandatory property is label on the object.
+
+```tsx
+import { echo } from 'echo-toast'
+
+// Your component, button, etc
+
+export function Button() {
+    return (
+        <button onClick={() => echo.notify({ label: 'This is a toast' })}>Click me to render a toast</button>
+    )
+}
+```
+Thats it! You know how to use it. Now time to learn how to customize it.
