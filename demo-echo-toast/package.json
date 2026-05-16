@@ -1,6 +1,6 @@
 {
   "name": "demo-echo-toast",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -26,10 +26,10 @@
     "@types/node": "^25.6.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "eslint": "^10.3.0",
+    "eslint-config-next": "16.2.6",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.3",
-    "eslint-config-next": "16.2.6",
-    "eslint": "^10.3.0"
+    "typescript": "^6.0.3"
   }
 }
