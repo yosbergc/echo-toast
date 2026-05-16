@@ -20,3 +20,12 @@ Is the toast itself, you can add some customizations to it to match your design/
 | ----------    | --------                                                              | --------
 | type?         | Define the design you will see depending on the situation you want to render the toast. `(default is blank)`   | `loading` \| `succesful` \| `error`  \| `warning` \| `info` \| `blank`| 
 | action?    | Define that you can add a button to your toast so user can interact with it.   | action?: `{ label: string, onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void, styling?: string }`
+| label      | Add the text you want to show on your toast | `string` |
+| title?     | Add a title to your toast it will add a better idea to the user what you are talking about | `string` |
+| icon?      | You can add the icon you want to show it on the toast. You will need to add an icon like a component or an icon imported from a library like React Icons/Lucide. | `React.ElementType` |
+| closeButton?| Allow you to disable or show the close icon, by default is `true` | `boolean` |
+| border? | Allow you to show or hide the border of the toast, by default is `true`. | `boolean` |
+| swipe | Allow you to enable or disable the implementation to allow user close a toast swipping, by default is `true` | `boolean` |
+| swipeDirection | Select the direction you want the users to swipe to close the toast, by default is `right` | `left` \| `right` |
+
+And thats it! Thats what you can edit or customize about the components of the library, if you have some ideas about what can be added that you think will be helpful for everyone, let us know!

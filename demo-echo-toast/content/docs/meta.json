@@ -1,0 +1,5 @@
+{
+  "title": "Plugin",
+  "pages": ["index", "installation", "how-to-use", "customization"],
+  "root": true
+}
