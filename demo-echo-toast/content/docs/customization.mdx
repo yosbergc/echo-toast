@@ -1,0 +1,22 @@
+---
+title: Customization
+description: Quick guide about how you can customize the library to reach the style you like/want for your project.
+---
+
+## Toaster
+
+Is the component that you will add to your page to render all the toast you want to render from anywhere in your project. You can add some customizations to it.
+
+| Property      | Description                                                           | Accepted Type
+| ----------    | --------                                                              | --------
+| positionX?    | Define the position in the axis X where the toasts will be rendered   | `left` \| `center` \| `right` |
+| positionY?    | Define the position in the axis Y where the toasts will be rendered   | `up` \| `middle` \| `bottom`
+
+## toast
+
+Is the toast itself, you can add some customizations to it to match your design/goal. We added some basic designs to most common situations you will need it to. This should be send in the object send in the function `echo.notify()` when you want to render a toast.
+
+| Property      | Description                                                           | Accepted Type
+| ----------    | --------                                                              | --------
+| type?         | Define the design you will see depending on the situation you want to render the toast. `(default is blank)`   | `loading` \| `succesful` \| `error`  \| `warning` \| `info` \| `blank`| 
+| action?    | Define that you can add a button to your toast so user can interact with it.   | action?: `{ label: string, onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void, styling?: string }`
