@@ -3,7 +3,7 @@
 ## Documentation
 
 [Documentation](https://echo-toast.vercel.app/)
-
+[NPM Link](https://www.npmjs.com/package/echo-toast)
 ## Installation
 
 ```js
