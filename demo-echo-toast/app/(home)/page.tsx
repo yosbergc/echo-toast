@@ -18,7 +18,7 @@ export default function HomePage() {
         and see the documentation.
       </p>
 
-      <p className='text-sm mt-8'>Done with 💙 by 
+      <p className='text-sm mt-8'>Created with 💙 by 
         <Link href="https://github.com/yosbergc" className='underline'> yosbergc</Link>
       </p>
 
