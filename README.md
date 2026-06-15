@@ -1,3 +1,5 @@
+<img width="596" height="315" alt="image" src="https://github.com/user-attachments/assets/71ad0fad-4fd3-4b77-8524-682c0683bda8" />
+
 # A simple lightweight toast component for React/Next.JS (under 2kb)
 
 ## Documentation
@@ -7,7 +9,7 @@
 ## Installation
 
 ```js
-npm install echo-toast
+pnpm install echo-toast
 ```
 
 ## Features
