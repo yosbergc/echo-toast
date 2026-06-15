@@ -61,7 +61,7 @@ export function Home() {
 
   function handleClick() {
     echo.notify({
-      label: "I've just said hi!"
+      label: "I've just said hi!",
       title: 'Greetings!'
     })
   }
